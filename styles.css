@@ -912,3 +912,43 @@ header nav.desktop-nav ul li:hover::after {
         max-width: 50%; /* Diminui a imagem no topo para economizar espaço */
     }
 }
+
+.price-container {
+    /* Ajuste o layout aqui se precisar que os elementos DE e POR fiquem lado a lado ou alinhados */
+    margin-bottom: 10px;
+}
+
+/* Preço Original Riscado */
+.original-price-wrapper {
+    display: flex; /* Para alinhar o preço riscado com o badge de desconto */
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaço entre o preço e o badge */
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 5px; /* Espaço antes do novo preço */
+}
+
+.original-price {
+    text-decoration: line-through; /* Riscado no preço antigo */
+    color: #ffffff; /* Cor cinza para o preço antigo */
+}
+
+/* Badge de Desconto (o balão verde) */
+.discount-badge {
+    background-color: #ff0000; /* Verde vibrante */
+    color: rgb(255, 253, 253);
+    font-weight: bold;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 5px; /* Bordas arredondadas */
+    line-height: 1; /* Alinhamento vertical do texto */
+}
+
+/* Novo Preço (Destaque) */
+.product-card-price {
+    color: #ffffff; /* Mantenha a cor clara para o preço principal */
+    font-size: 22px; /* Maior e mais destacado */
+    font-weight: bold;
+    margin-top: 0;
+}
