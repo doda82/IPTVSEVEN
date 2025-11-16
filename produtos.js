@@ -1,214 +1,99 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seven - Produtos</title>
+document.addEventListener('DOMContentLoaded', () => {
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+    const suporte1 = '5531991814249';
+    const suporte2 = '5531987002923';
 
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="produtos.css" />
-</head>
+    const seletorOrdenacao = document.getElementById('ordenar-produtos');
+    const campoBusca = document.getElementById('input-busca');
+    const container = document.querySelector('.products-grid');
+    const todosOsProdutos = Array.from(container.querySelectorAll('.product-card'));
 
-<body class="products-page">
+    function filtrarProdutos() {
+        const termo = campoBusca.value.toLowerCase();
 
-  <!-- HEADER -->
-  <header>
-    <div class="logo">IPTV SEVEN</div>
+        todosOsProdutos.forEach(produto => {
+            const nome = produto.querySelector('.product-card-name').textContent.toLowerCase();
+            produto.style.display = nome.includes(termo) ? 'flex' : 'none';
+        });
 
-    <button id="menu-toggle" class="menu-toggle-btn" aria-label="Abrir menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
+        ordenarProdutos();
+    }
 
-    <nav class="desktop-nav">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li class="active-nav"><a href="produtos.html">Produtos</a></li>
-        <li><a href="plano.html">Plano</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
+    function ordenarProdutos() {
+        const ordem = seletorOrdenacao.value;
+        const visiveis = todosOsProdutos.filter(p => p.style.display !== 'none');
 
-  <!-- MENU MOBILE -->
-  <div id="mobile-menu" class="mobile-menu-container">
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="produtos.html">Produtos</a></li>
-        <li><a href="plano.html">Plano</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
-  </div>
+        visiveis.sort((a, b) => {
+            const A = parseFloat(a.dataset.price);
+            const B = parseFloat(b.dataset.price);
 
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main>
-    <div class="products-header">
-      <h1>Nossos Planos</h1>
-      <p>Escolha o plano ideal e tenha acesso ao melhor do IPTV com qualidade, estabilidade e preço justo.</p>
-    </div>
+            if (ordem === 'menor-preco') return A - B;
+            if (ordem === 'maior-preco') return B - A;
 
-    <!-- FILTROS -->
-    <div class="filtro-container">
+            return parseInt(a.dataset.order) - parseInt(b.dataset.order);
+        });
 
-      <div class="ordenar-wrapper">
-        <label for="ordenar-produtos">Ordenar por:</label>
-        <select id="ordenar-produtos">
-          <option value="padrao">Padrão</option>
-          <option value="menor-preco">Menor Preço</option>
-          <option value="maior-preco">Maior Preço</option>
-        </select>
-      </div>
+        visiveis.forEach(p => container.appendChild(p));
+    }
 
-      <div class="busca-wrapper">
-        <svg class="icone-lupa" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" />
-        </svg>
-        <input id="input-busca" type="text" placeholder="Pesquisar planos e ofertas...">
-      </div>
+    if (campoBusca) campoBusca.addEventListener('input', filtrarProdutos);
+    if (seletorOrdenacao) seletorOrdenacao.addEventListener('change', ordenarProdutos);
+    ordenarProdutos();
 
-    </div>
-    <div class="products-grid">
-      <div class="product-card"
-    data-price="19.90"
-    data-order="2"
-    data-desc="Oferta especial de lançamento! Aproveite IPTV completo com filmes, séries, canais ao vivo e muito mais, por um preço único e exclusivo.">
 
-    <div class="product-card-img">
-        <img src="./images/promoção-Photoroom.png" alt="Promoção de Lançamento" />
-    </div>
+    // ==============================
+    // MODAL DE DETALHES + WHATSAPP
+    // ==============================
+    const modal = document.getElementById("product-modal");
+    const modalImg = document.getElementById("modal-img");
+    const modalTitle = document.getElementById("modal-title");
+    const modalPrice = document.getElementById("modal-price");
+    const modalDesc = document.getElementById("modal-desc");
+    const modalClose = document.querySelector(".modal-close");
+    const botaoComprar = document.querySelector(".btn-buy");
 
-    <div class="product-card-content">
-        <h3 class="product-card-name">Plano Essencial</h3>
+    let produtoSelecionado = null;
 
-        <div class="original-price-wrapper">
-            <span class="original-price">R$ 30,00</span>
-            <span class="discount-badge">33% OFF</span> 
-        </div>
-        
-        <p class="product-card-price">R$ 19,90</p>
-        
-        <a href="#" class="btn">Saiba Mais</a>
-    </div>
-</div>
+    document.querySelectorAll('.product-card .btn').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
 
-            <div class="product-card"
-        data-price="00.00"
-        data-order="1"
-        data-desc="Indique e Ganhe: Ao trazer um amigo que contrate o serviço, você é recompensado com 1 Mês Gratuito de IPTV!">
+            const card = e.target.closest('.product-card');
+            produtoSelecionado = card;
 
-        <div class="product-card-img">
-          <img src="./images/Indicou.png" alt="Mensal" />
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-name">Plano Safira</h3>
+            modalImg.src = card.querySelector("img").src;
+            modalTitle.textContent = card.querySelector(".product-card-name").textContent;
+            modalPrice.textContent = card.querySelector(".product-card-price").textContent;
+            modalDesc.textContent = card.dataset.desc || "Sem descrição disponível.";
 
-             <div class="original-price-wrapper">
-            <span class="original-price">R$ 30,00</span>
-            <span class="discount-badge">100% OFF</span> 
-        </div>
+            modal.classList.add("ativo");
+            document.body.style.overflow = "hidden";
+        });
+    });
 
-          <p class="product-card-price">R$ 00,00</p>
-          <a href="#" class="btn">Saiba Mais</a>
+    modalClose.addEventListener("click", () => {
+        modal.classList.remove("ativo");
+        document.body.style.overflow = "auto";
+    });
 
-        </div>
-      </div>
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("ativo");
+            document.body.style.overflow = "auto";
+        }
+    });
 
-      <!-- MENSAL -->
-      <div class="product-card"
-        data-price="30.00"
-        data-order="3"
-        data-desc="Plano Mensal IPTV com todos os canais, filmes e séries. Ideal para quem quer testar e ter flexibilidade. Suporte rápido e estabilidade garantida.">
+    botaoComprar.addEventListener("click", () => {
+        if (!produtoSelecionado) return;
 
-        <div class="product-card-img">
-          <img src="./images/Mensal.png" alt="Mensal" />
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-name">Plano Prata</h3>
-          <p class="product-card-price">R$ 30,00</p>
-          <a href="#" class="btn">Saiba Mais</a>
-        </div>
-      </div>
+        const nome = produtoSelecionado.querySelector(".product-card-name").textContent;
+        const preco = produtoSelecionado.querySelector(".product-card-price").textContent;
 
-      <!-- TRIMESTRAL -->
-      <div class="product-card"
-        data-price="90.00"
-        data-order="4"
-        data-desc="Plano Trimestral IPTV com economia e estabilidade. Assine por 3 meses e tenha acesso ilimitado a filmes, séries, canais ao vivo e conteúdo premium.">
+        const numeroEscolhido = Math.random() > 0.5 ? suporte1 : suporte2;
+        const mensagem = `Olá! Tenho interesse em assinar o *${nome}* no valor de ${preco}. Pode me ajudar?`;
 
-        <div class="product-card-img">
-          <img src="./images/Trimestral.png" alt="Trimestral" />
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-name">Plano Ouro</h3>
-          <p class="product-card-price">R$ 75,00</p>
-          <a href="#" class="btn">Saiba Mais</a>
-        </div>
-      </div>
+        const link = `https://wa.me/${numeroEscolhido}?text=${encodeURIComponent(mensagem)}`;
+        window.open(link, '_blank');
+    });
 
-      <!-- SEMESTRAL -->
-      <div class="product-card"
-        data-price="120.00"
-        data-order="5"
-        data-desc="Plano Semestral IPTV ideal para quem quer tranquilidade e pagar menos. Filmes, séries, esportes, 24h e muito mais por 6 meses.">
-
-        <div class="product-card-img">
-          <img src="./images/Semestral.png" alt="Semestral" />
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-name">Plano Platina</h3>
-          <p class="product-card-price">R$ 140,00</p>
-          <a href="#" class="btn">Saiba Mais</a>
-        </div>
-      </div>
-
-      <!-- ANUAL -->
-      <div class="product-card"
-        data-price="240.00"
-        data-order="6"
-        data-desc="Plano Anual IPTV é a maior economia! Assine por 12 meses e tenha acesso completo ao melhor conteúdo do mercado, sem preocupação.">
-
-        <div class="product-card-img">
-          <img src="./images/Anual.png" alt="Anual" />
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-name">Plano Diamante </h3>
-          <p class="product-card-price">R$ 260,00</p>
-          <a href="#" class="btn">Saiba Mais</a>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- MODAL -->
-  <div id="product-modal" class="modal-overlay">
-    <div class="modal-content">
-
-      <button class="modal-close">&times;</button>
-
-      <div class="modal-left">
-        <img id="modal-img" src="" alt="">
-      </div>
-
-      <div class="modal-right">
-        <h2 id="modal-title"></h2>
-        <p id="modal-price"></p>
-        <p id="modal-desc"></p>
-
-        <button id="btn-whats-modal" class="btn btn-buy">Comprar Agora</button>
-      </div>
-
-    </div>
-  </div>
-
-<script src="script.js"></script>
-<script src="whatsapp-modal.js?v=20251116"></script> 
-</body>
-</html>
+});
