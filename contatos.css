@@ -1,12 +1,23 @@
+/* Definições de cores e tamanhos (melhora a manutenção) */
+:root {
+    --bg-dark: #1a1a1a;
+    --border-color-default: rgba(255, 255, 255, 0.1); /* Borda mais sutil */
+    --border-color-glow: rgba(255, 255, 255, 0.3); /* Borda em hover */
+    --text-light: #ffffff;
+    --text-gray: #cccccc;
+    --box-bg-light: rgba(255, 255, 255, 0.05);
+    --box-shadow-default: rgba(0, 0, 0, 0.4);
+    --box-shadow-hover: rgba(0, 0, 0, 0.6);
+    --border-radius-lg: 12px;
+}
+
 .contact-container {
     text-align: center;
     max-width: 800px;
-    margin: 60px auto;
+    margin: 150px auto 60px auto;
     padding: 0 20px;
-    height: calc(100dvh - 200px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .contact-header {
@@ -29,19 +40,64 @@
 
 .contact-header p {
     font-size: 1.2rem;
-    color: #cccccc; 
+    color: var(--text-gray); 
     line-height: 1.6;
     max-width: 650px; 
     margin: 0 auto; 
 }
 
-.contact-buttons {
+/* Container principal em 2 colunas */
+.contact-grid {
+    display: flex;
+    gap: 30px; 
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start; 
+}
+
+/* 🟢 MODIFICADO: Estilo para cada coluna (agora com efeito de brilho na borda) */
+.contact-column {
+    flex: 1; 
+    min-width: 280px; 
     display: flex;
     flex-direction: column;
     gap: 20px; 
-    align-items: center;
+    padding: 30px 20px; 
+    
+    background-color: var(--box-bg-light); 
+    border: 1px solid var(--border-color-default); /* Borda padrão mais sutil */
+    border-radius: var(--border-radius-lg); 
+    box-shadow: 0 4px 10px var(--box-shadow-default); /* Sombra inicial mais suave */
+    
+    transition: all 0.3s ease; /* Transição para todas as propriedades */
 }
 
+/* Efeito de hover para as colunas - Brilho na borda e sombra mais intensa */
+.contact-column:hover {
+    transform: translateY(-5px); 
+    border-color: var(--border-color-glow); /* Borda mais clara no hover */
+    box-shadow: 0 8px 25px var(--box-shadow-hover), /* Sombra mais intensa */
+                0 0 15px rgba(255, 255, 255, 0.1); /* Brilho sutil na própria caixa */
+}
+
+/* Título de cada coluna (WhatsApp/Telegram) */
+.column-title {
+    font-family: "Orbitron", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 20px; 
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.column-title i {
+    font-size: 1.6rem;
+}
+
+/* 🟢 MODIFICADO: Efeito de brilho também nos botões */
 .contact-button {
     position: relative;
     overflow: hidden;
@@ -49,19 +105,19 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 400px;
     padding: 20px;
     text-decoration: none;
-    color: #ffffff;
+    color: var(--text-light);
     font-size: 1.2rem;
     font-weight: 600;
     font-family: "Orbitron", sans-serif;
-    border-radius: 12px;
+    border-radius: var(--border-radius-lg);
     
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: var(--box-bg-light);
+    border: 1px solid var(--border-color-default); /* Borda padrão mais sutil */
     
     transition: all 0.4s ease-in-out;
+    box-shadow: 0 2px 8px var(--box-shadow-default); /* Sombra inicial mais suave */
 }
 
 .contact-button::before {
@@ -76,23 +132,16 @@
     transition: left 0.7s ease-in-out;
 }
 
-.contact-button i {
-    font-size: 1.8rem;
-    margin-right: 15px;
-    transition: transform 0.4s ease;
-}
-
 .contact-button:hover {
     transform: translateY(-5px) scale(1.02);
-    color: #ffffff;
+    color: var(--text-light);
+    border-color: var(--border-color-glow); /* Borda mais clara no hover */
+    box-shadow: 0 4px 15px var(--box-shadow-hover), /* Sombra mais intensa */
+                0 0 10px rgba(255, 255, 255, 0.08); /* Brilho sutil */
 }
 
 .contact-button:hover::before {
     left: 100%; 
-}
-
-.contact-button:hover i {
-    transform: scale(1.1);
 }
 
 body.products-page {
@@ -100,7 +149,23 @@ body.products-page {
 }
 
 @keyframes logoText {
-  0% { background-position: 0% center; }
-  50% { background-position: 100% center; }
-  100% { background-position: 0% center; }
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
 }
+
+/* Responsividade */
+@media (max-width: 650px) {
+    .contact-grid {
+        flex-direction: column; 
+        gap: 40px; 
+    }
+    
+    .contact-column {
+        min-width: 100%;
+    }
+    .column-title {
+        margin-bottom: 15px; 
+    }
+}
+
