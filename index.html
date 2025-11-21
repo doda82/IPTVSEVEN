@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <title>IPTV SEVEN - O Universo em Pixels</title>
+    <link rel="icon" type="image/png" href="./images/Icone-site (2).png" />
+</head>
+<body>
+
+    <header>
+        <div class="logo">IPTV SEVEN</div>
+        
+        <button id="menu-toggle" class="menu-toggle-btn" aria-label="Abrir menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <nav class="desktop-nav">
+            <ul>
+                <li class="active-nav"><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Canais & Filmes</a></li>
+                <li><a href="assinaragora.html">Assinar Agora</a></li>
+                <li><a href="contato.html">Suporte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="mobile-menu" class="mobile-menu-container">
+        <nav>
+            <ul>
+                <li class="active-nav"><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Canais & Filmes</a></li>
+                <li><a href="assinaragora.html">Assinar Agora</a></li>
+                <li><a href="contato.html">Suporte</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="hero-container">
+        <div class="ambient-light"></div>
+
+        <div class="hero-content">
+            <span class="tag-cine">LANÇAMENTO 4K</span>
+            <h1>O CINEMA <br> NA SUA CASA</h1>
+            <p class="hero-description">
+                Tenha acesso ilimitado a <strong>Filmes, Doramas, Futebol ao vivo e Séries.</strong> 
+                A qualidade de streaming que você merece, sem travamentos.
+            </p>
+            <div class="hero-buttons">
+                <a href="#" onclick="redirectToWhatsapp('teste')" class="btn btn-primary">TESTE GRÁTIS</a>
+                
+                <a href="produtos.html" class="btn btn-outline">VER CATÁLOGO</a>
+            </div>
+        </div>
+
+        <div class="gallery-3d-container">
+            <div class="gallery-track">
+                
+                <div class="cine-card">
+                    <div class="card-image" style="background-image: url('images/WhatsApp\ Image\ 2025-11-20\ at\ 20.04.45.jpeg');"></div>
+                    <div class="card-overlay">
+                        <h3>FUTEBOL</h3>
+                        <p>Brasileirão & Champions</p>
+                    </div>
+                </div>
+
+                <div class="cine-card active">
+                    <div class="card-image" style="background-image: url('images/WhatsApp\ Image\ 2025-11-20\ at\ 20.12.36.jpeg');"></div>
+                    <div class="card-overlay">
+                        <h3>CINEMA</h3>
+                        <p>Lançamentos 2025</p>
+                    </div>
+                </div>
+
+                <div class="cine-card">
+                    <div class="card-image" style="background-image: url('images/MV5BZTRiOGQ2NGUtNzc3NC00OTY0LWJiZWMtNzBlOGVlNTY0ZThlXkEyXkFqcGc@.jpg');"></div>
+                    <div class="card-overlay">
+                        <h3>DORAMAS</h3>
+                        <p>Séries Asiáticas</p>
+                    </div>
+                </div>
+
+                <div class="cine-card">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="card-overlay">
+                        <h3>STREAMING</h3>
+                        <p>Apps Favoritos</p>
+                    </div>
+                </div>
+
+                <div class="cine-card">
+                    <div class="card-image" style="background-image: url('images/onepica.jpeg');"></div>
+                    <div class="card-overlay">
+                        <h3>ANIMES</h3>
+                        <p>Mundo Geek</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+
+    <script>
+        function redirectToWhatsapp(tipo) {
+            // Seus números
+            const numbers = [
+                "5531987002923", 
+                "5531991814249"
+            ];
+
+            // Define a mensagem baseada no botão clicado
+            let messageText = "";
+            if (tipo === 'teste') {
+                // Mensagem específica para o botão roxo
+                messageText = "Olá! Vim pelo site e quero solicitar meu TESTE GRÁTIS.";
+            } else {
+                // Caso genérico
+                messageText = "Olá! Vim pelo site da IPTV SEVEN e gostaria de mais informações.";
+            }
+            
+            const message = encodeURIComponent(messageText);
+
+            // Lógica de Rotação (Load Balancer)
+            let lastIndex = localStorage.getItem('lastWppIndex');
+            let nextIndex;
+            
+            if (lastIndex === null) {
+                nextIndex = 0;
+            } else {
+                nextIndex = parseInt(lastIndex) === 0 ? 1 : 0;
+            }
+
+            localStorage.setItem('lastWppIndex', nextIndex);
+
+            // Abre o WhatsApp
+            window.open(`https://wa.me/${numbers[nextIndex]}?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>

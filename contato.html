@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <title>Suporte Premium - IPTV SEVEN</title>
+    <link rel="icon" type="image/png" href="./images/Icone-site (2).png" />
+
+    <style>
+        /* CSS ESPECÍFICO DA PÁGINA DE SUPORTE (Estilo 3D Glass) */
+        .support-container {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 50px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-orb {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(138,43,226,0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseOrb 5s infinite ease-in-out;
+        }
+
+        @keyframes pulseOrb {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .support-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .support-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            background: linear-gradient(180deg, #fff, #a0a0a0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .support-quote {
+            font-size: 1.1rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto;
+            font-style: italic;
+            border-left: 3px solid #8a2be2;
+            padding-left: 20px;
+        }
+
+        .contact-card {
+            background: rgba(25, 25, 35, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+        }
+
+        .icon-3d {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+            transition: 0.3s;
+        }
+
+        .contact-card:hover .icon-3d {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-action {
+            display: inline-block;
+            width: 100%;
+            padding: 15px 0;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .card-wpp { border-top: 4px solid #25D366; }
+        .card-wpp .icon-3d { color: #25D366; }
+        .btn-wpp { background: #25D366; color: #000; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3); }
+        .btn-wpp:hover { background: #1ebe57; color: white; }
+
+        .card-tg { border-top: 4px solid #0088cc; }
+        .card-tg .icon-3d { color: #0088cc; }
+        .btn-tg { background: #0088cc; color: white; box-shadow: 0 5px 20px rgba(0, 136, 204, 0.3); }
+        .btn-tg:hover { background: #0077b5; }
+
+        .card-channel { border-top: 4px solid #9b59b6; }
+        .card-channel .icon-3d { color: #9b59b6; }
+        .btn-channel { background: transparent; border: 2px solid #9b59b6; color: white; }
+        .btn-channel:hover { background: #9b59b6; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">IPTV SEVEN</div>
+        <button id="menu-toggle" class="menu-toggle-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Canais & Filmes</a></li>
+                <li><a href="assinaragora.html">Assinar Agora</a></li>
+                <li class="active-nav"><a href="contato.html">Suporte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="mobile-menu" class="mobile-menu-container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Canais & Filmes</a></li>
+                <li><a href="assinaragora.html">Assinar Agora</a></li>
+                <li class="active-nav"><a href="contato.html">Suporte</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="support-container">
+        <div class="bg-orb"></div>
+
+        <div class="support-grid">
+            
+            <div class="support-header">
+                <h1>CENTRAL DE AJUDA</h1>
+                <p class="support-quote">
+                    "A tecnologia é complexa, mas nosso atendimento é simples. Conecte-se agora com especialistas prontos para garantir sua diversão sem interrupções."
+                </p>
+            </div>
+
+            <div class="contact-card card-wpp" onclick="redirectToWhatsapp()">
+                <div class="icon-3d"><i class="fab fa-whatsapp"></i></div>
+                <h3 class="card-title">SUPORTE RÁPIDO</h3>
+                <p class="card-desc">Fale com um atendente agora mesmo. Tire dúvidas, renove planos ou peça ajuda técnica.</p>
+                <a href="#" class="btn-action btn-wpp">INICIAR CONVERSA <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="contact-card card-tg">
+                <div class="icon-3d"><i class="fab fa-telegram-plane"></i></div>
+                <h3 class="card-title">TELEGRAM VIP</h3>
+                <p class="card-desc">Prefere a privacidade do Telegram? Nosso suporte também está online por lá.</p>
+                <a href="https://t.me/iptvsevensuporte" target="_blank" class="btn-action btn-tg">CHAMAR NO TELEGRAM</a>
+            </div>
+
+            <div class="contact-card card-channel">
+                <div class="icon-3d"><i class="fas fa-bullhorn"></i></div>
+                <h3 class="card-title">CANAL OFICIAL</h3>
+                <p class="card-desc">Entre no nosso grupo e receba atualizações sobre manutenções, novidades e ofertas.</p>
+                <a href="https://t.me/iptvsevenanuncio" target="_blank" class="btn-action btn-channel">ENTRAR NO GRUPO</a>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    
+    <script>
+        function redirectToWhatsapp() {
+            // Seus números
+            const numbers = [
+                "5531987002923", 
+                "5531991814249"
+            ];
+
+            // Mensagem específica para a página de suporte
+            const message = encodeURIComponent("Olá! Vim pela Central de Ajuda do site e preciso de suporte.");
+
+            // Lógica de Rotação
+            let lastIndex = localStorage.getItem('lastWppIndex');
+            let nextIndex;
+            
+            if (lastIndex === null) {
+                nextIndex = 0;
+            } else {
+                nextIndex = parseInt(lastIndex) === 0 ? 1 : 0;
+            }
+
+            localStorage.setItem('lastWppIndex', nextIndex);
+
+            // Abre o WhatsApp
+            window.open(`https://wa.me/${numbers[nextIndex]}?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>

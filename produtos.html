@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <title>Catálogo - IPTV SEVEN</title>
+    <link rel="icon" type="image/png" href="./images/Icone-site (2).png" />
+
+    <style>
+        /* Layout para alinhar Preço e Botão lado a lado */
+        .vip-action-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px; /* Espaço entre preço e botão */
+            margin-top: 30px;
+            flex-wrap: wrap; /* Para não quebrar no celular */
+        }
+
+        .price-box {
+            text-align: left;
+        }
+
+        .old-price {
+            display: block;
+            font-size: 0.9rem;
+            color: #888;
+            text-decoration: line-through;
+            margin-bottom: -5px;
+        }
+
+        .new-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #fff;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .new-price small {
+            font-size: 1rem;
+            color: #00ff88; /* Verde Neon */
+        }
+
+        /* Badge de Porcentagem */
+        .promo-badge {
+            background: #00ff88;
+            color: black;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 900;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Ajuste no botão para ficar na mesma altura */
+        .btn-vip-aligned {
+            background: linear-gradient(90deg, #8a2be2, #ff0055);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 1rem;
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+            height: fit-content;
+            white-space: nowrap;
+        }
+
+        .btn-vip-aligned:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 0, 85, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">IPTV SEVEN</div>
+        <button id="menu-toggle" class="menu-toggle-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active-nav"><a href="produtos.html">Canais & Filmes</a></li>
+                <li><a href="assinaragora.html">Assinar Agora</a></li>
+                <li><a href="contato.html">Suporte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="mobile-menu" class="mobile-menu-container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active-nav"><a href="produtos.html">Canais & Filmes</a></li>
+                <li><a href="assinaragora.html">Assinar Agora</a></li>
+                <li><a href="contato.html">Suporte</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section class="catalog-hero" style="background-image: linear-gradient(to top, #050507 10%, transparent 90%), url('https://image.tmdb.org/t/p/original/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg');">
+            <div class="catalog-content">
+                <span class="badge-top">TOP 1 MUNDIAL</span>
+                <h2>VENOM <br> A ÚLTIMA RODADA</h2>
+                <p class="meta-info">
+                    <span>2024/25</span>
+                    <span class="quality">4K UHD</span>
+                    <span>Ação / Sci-Fi</span>
+                </p>
+                <p class="synopsis">Eddie e Venom estão fugindo. Caçados pelos mundos de ambos, a dupla é forçada a tomar uma decisão devastadora que fechará as cortinas de sua última dança.</p>
+                <div class="action-buttons">
+                    <a href="assinaragora.html" class="btn btn-primary"><i class="fas fa-play"></i> ASSISTIR AGORA</a>
+                    <button class="btn btn-outline"><i class="fas fa-plus"></i> MINHA LISTA</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="catalog-section">
+            <div class="section-header">
+                <h3><i class="fas fa-fire" style="color: var(--accent-color);"></i> Em Alta em Novembro</h3>
+                <a href="#" class="view-all">Ver tudo <i class="fas fa-chevron-right"></i></a>
+            </div>
+            
+            <div class="movie-grid">
+                
+                <div class="movie-card">
+                    <div class="poster" style="background-image: url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg');">
+                        <div class="hover-play"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge-hd">4K</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>Deadpool & Wolverine</h4>
+                        <p>Ação / Comédia</p>
+                    </div>
+                </div>
+
+                <div class="movie-card">
+                    <div class="poster" style="background-image: url('images/Round-6-2a-temporada-2.jpg');">
+                        <div class="hover-play"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge-hd">SÉRIE</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>Round 6 (Squid Game)</h4>
+                        <p>Dorama / Suspense</p>
+                    </div>
+                </div>
+
+                <div class="movie-card">
+                    <div class="poster" style="background-image: url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg');">
+                        <div class="hover-play"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge-hd">FHD</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>Divertida Mente 2</h4>
+                        <p>Animação</p>
+                    </div>
+                </div>
+
+                <div class="movie-card">
+                    <div class="poster" style="background-image: url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/49WJfeN0moxb9IPfGn8AIqMGskD.jpg');">
+                        <div class="hover-play"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge-hd">4K HDR</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>Stranger Things</h4>
+                        <p>Série / Ficção</p>
+                    </div>
+                </div>
+
+                 <div class="movie-card">
+                    <div class="poster" style="background-image: url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/gKkl37BQuKTanygYQG1pyYgLVgf.jpg');">
+                        <div class="hover-play"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge-hd">IMAX</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>Planeta dos Macacos</h4>
+                        <p>O Reinado</p>
+                    </div>
+                </div>
+
+                <div class="movie-card">
+                    <div class="poster" style="background-image: url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg');">
+                        <div class="hover-play"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge-hd">4K</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>Avatar: Caminho da Água</h4>
+                        <p>Aventura / Sci-Fi</p>
+                    </div>
+                </div>
+
+                <div class="movie-card">
+                    <div class="poster" style="background-image: url('https://image.tmdb.org/t/p/w600_and_h900_bestv2/gh2bmprLtUQ8oXCSluzfqaicyrm.jpg');">
+                        <div class="hover-play"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge-hd">FHD</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>John Wick 4: Baba Yaga</h4>
+                        <p>Ação</p>
+                    </div>
+                </div>
+
+                <div class="movie-card">
+                    <div class="poster" style="background-image: url('images/WhatsApp\ Image\ 2025-11-20\ at\ 20.21.46.jpeg');">
+                        <div class="hover-play"><i class="fas fa-play-circle"></i></div>
+                        <span class="badge-hd">KIDS</span>
+                    </div>
+                    <div class="movie-info">
+                        <h4>Deu a Louca na Chapeuzinho</h4>
+                        <p>Animação / Comédia</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="live-sports-section">
+            <div class="section-header">
+                <h3><i class="fas fa-bolt" style="color: #ff0055;"></i> ACONTECENDO AGORA</h3>
+                <div class="live-indicator">
+                    <span class="blink-dot"></span> AO VIVO
+                </div>
+            </div>
+
+            <div class="match-grid">
+                <div class="match-card">
+                    <div class="match-bg" style="background-image: url('images/brasileirao.png');"></div>
+                    <div class="match-overlay">
+                        <div class="league-badge">BRASILEIRÃO</div>
+                        <div class="teams-container">
+                            <div class="team">
+                                <div class="team-logo">FLA</div>
+                                <span>Flamengo</span>
+                            </div>
+                            <div class="versus">X</div>
+                            <div class="team">
+                                <div class="team-logo">PAL</div>
+                                <span>Palmeiras</span>
+                            </div>
+                        </div>
+                        <a href="assinaragora.html" class="btn-watch"><i class="fas fa-play"></i> ASSISTIR</a>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-bg" style="background-image: url('images/champ.avif');"></div>
+                    <div class="match-overlay">
+                        <div class="league-badge" style="background: #363b4d;">CHAMPIONS</div>
+                        <div class="teams-container">
+                            <div class="team">
+                                <div class="team-logo">MCI</div>
+                                <span>Man. City</span>
+                            </div>
+                            <div class="versus">X</div>
+                            <div class="team">
+                                <div class="team-logo">RMA</div>
+                                <span>Real Madrid</span>
+                            </div>
+                        </div>
+                        <a href="assinaragora.html" class="btn-watch"><i class="fas fa-play"></i> ASSISTIR</a>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-bg" style="background-image: url('images/ufc-4k-1auces3g7disgqtt.jpg');"></div>
+                    <div class="match-overlay">
+                        <div class="league-badge" style="background: #cc0000;">UFC FIGHT PASS</div>
+                        <div class="event-title">
+                            <h2>OLIVEIRA vs MAKHACHEV</h2>
+                            <p>Disputa de Cinturão</p>
+                        </div>
+                        <a href="assinaragora.html" class="btn-watch"><i class="fas fa-play"></i> ASSISTIR</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="vip-pass-container">
+            <div class="vip-glass-card">
+                <div class="glow-effect"></div>
+                <div class="vip-content">
+                    
+                    <span class="promo-badge">33% OFF</span>
+
+                    <div class="icon-crown"><i class="fas fa-crown"></i></div>
+                    <h2>PROMOÇÃO MENSAL VIP</h2>
+                    <p class="vip-subtitle">A qualidade de cinema que você merece, pelo menor preço.</p>
+                    
+                    <ul class="vip-benefits">
+                        <li><i class="fas fa-check-circle"></i> +2.000 Canais 4K</li>
+                        <li><i class="fas fa-check-circle"></i> Filmes & Séries On-Demand</li>
+                        <li><i class="fas fa-check-circle"></i> Sem Travamentos (Anti-Buffer)</li>
+                    </ul>
+
+                    <div class="vip-action-row">
+                        <div class="price-box">
+                            <span class="old-price">De R$ 29,90</span>
+                            <div class="new-price"><small>POR R$</small> 19,90</div>
+                        </div>
+
+                        <a href="assinaragora.html" class="btn-vip-aligned">LIBERAR ACESSO <i class="fas fa-unlock-alt"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

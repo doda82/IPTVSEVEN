@@ -1,0 +1,1115 @@
+/* =========================================
+   RESET E VARIÁVEIS GERAIS
+   ========================================= */
+:root {
+    --bg-color: #050507; /* Fundo quase preto */
+    --primary-color: #8a2be2; /* Roxo principal */
+    --accent-color: #ff0055; /* Rosa/Vermelho dos títulos dos cards */
+    --text-white: #ffffff;
+    --text-gray: #b3b3b3;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --font-main: 'Montserrat', sans-serif;
+    --font-display: 'Orbitron', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-white);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   AMBIENT LIGHT (O BRILHO NO TOPO)
+   ========================================= */
+/* Isso cria aquele efeito de luz roxa/branca vazando do topo igual a foto */
+.ambient-light {
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 300px;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.4) 0%, rgba(5, 5, 7, 0) 70%);
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* =========================================
+   HEADER E NAVEGAÇÃO
+   ========================================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    position: relative;
+    z-index: 100;
+    background: transparent; /* Fundo transparente para ver o glow */
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #fff, #a0a0a0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Menu Desktop */
+.desktop-nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.desktop-nav a {
+    font-size: 1rem; /* Ajustei o tamanho para ficar igual a foto */
+    font-weight: 500;
+    color: #b3b3b3; /* Cinza claro para os inativos */
+    transition: all 0.3s ease;
+}
+
+
+.desktop-nav a:hover,
+.active-nav a {
+    color: var(--text-white);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Botão Mobile (Hambúrguer) - Escondido no Desktop */
+.menu-toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-white);
+    border-radius: 2px;
+}
+
+/* Menu Mobile Container (Escondido por padrão) */
+.mobile-menu-container {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: rgba(10, 10, 12, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 200;
+    padding-top: 80px;
+    transition: 0.4s ease;
+    border-left: 1px solid var(--glass-border);
+}
+
+.mobile-menu-container.active {
+    right: 0;
+}
+
+.mobile-menu-container nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* =========================================
+   HERO SECTION (CONTEÚDO PRINCIPAL)
+   ========================================= */
+.hero-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 60px;
+    min-height: 80vh;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+    margin-bottom: 120px; /* Espaço entre texto e cards */
+}
+
+.tag-cine {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--text-gray);
+    margin-bottom: 15px;
+    border: 1px solid var(--glass-border);
+    padding: 5px 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+h1 {
+    font-family: var(--font-main);
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #a1a1a1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-description strong {
+    color: var(--text-white);
+}
+
+/* Botões */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 14px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #8a2be2 0%, #6a0dad 100%);
+    color: white;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+    border: none;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-white);
+}
+
+.btn-outline:hover {
+    border-color: var(--text-white);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   GALERIA DE CARDS (O RODAPÉ COM IMAGENS)
+   ========================================= */
+.gallery-3d-container {
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px; /* Dá profundidade se quisermos 3D no futuro */
+    padding-bottom: 50px;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.cine-card {
+    position: relative;
+    width: 180px; /* Largura similar a poster de filme */
+    height: 270px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cine-card:hover, 
+.cine-card.active {
+    transform: scale(1.05) translateY(-10px);
+    border-color: rgba(138, 43, 226, 0.5);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+/* Efeito de escurecimento no fundo do card */
+.card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, transparent 60%);
+}
+
+.cine-card:hover .card-image {
+    transform: scale(1.1); /* Zoom suave na imagem interna */
+}
+
+/* Texto sobre o card */
+.card-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    right: 15px;
+    z-index: 2;
+    text-align: left;
+}
+
+.card-overlay h3 {
+    color: var(--accent-color); /* O Rosa/Vermelho da referência */
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    text-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
+}
+
+.card-overlay p {
+    color: #e0e0e0;
+    font-size: 0.75rem;
+    font-weight: 300;
+}
+
+/* =========================================
+   RESPONSIVIDADE (CELULAR)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Header */
+    .desktop-nav {
+        display: none; /* Esconde menu normal */
+    }
+    .menu-toggle-btn {
+        display: flex; /* Mostra botão hambúrguer */
+    }
+
+    /* Hero Texto */
+    h1 {
+        font-size: 2.2rem;
+    }
+    .hero-description {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
+    
+    /* Botões empilhados no mobile ou lado a lado menores */
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 40px;
+    }
+
+    /* Cards no mobile */
+    .gallery-track {
+        gap: 15px;
+        justify-content: flex-start;
+        overflow-x: auto; /* Scroll horizontal no celular */
+        padding-bottom: 20px;
+        flex-wrap: nowrap; /* Força linha única */
+        padding-left: 20px; /* Espaço inicial */
+    }
+
+    .cine-card {
+        min-width: 140px; /* Cards menores */
+        height: 220px;
+    }
+    
+    /* Scrollbar oculta no mobile */
+    .gallery-track::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.desktop-nav a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.active-nav a {
+    color: #ffffff !important;
+    font-weight: 700;
+    /* Esse text-shadow cria o efeito de neon branco/azulado da imagem */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 
+                 0 0 30px rgba(138, 43, 226, 0.4);
+}
+
+/* =========================================
+   ESTILOS DA PÁGINA DE CATÁLOGO / PRODUTOS
+   ========================================= */
+
+/* Banner Hero do Catalogo */
+.catalog-hero {
+    height: 70vh;
+    background-size: cover;
+    background-position: center top;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: -80px; /* Para ficar atrás do menu */
+}
+
+.catalog-content {
+    padding-left: 5%;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.badge-top {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 5px 10px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.catalog-content h2 {
+    font-size: 3.5rem;
+    font-family: var(--font-display);
+    margin-bottom: 15px;
+    line-height: 1;
+    text-transform: uppercase;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+}
+
+.meta-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.quality {
+    border: 1px solid #e0e0e0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+}
+
+.synopsis {
+    color: #ccc;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    font-size: 1rem;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* Seções do Catalogo */
+.catalog-section {
+    padding: 50px 5%;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.view-all {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Grid de Filmes (Pôsteres Verticais) */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.movie-card {
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+}
+
+.poster {
+    height: 270px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.badge-hd {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: var(--accent-color);
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 3px;
+    border: 1px solid var(--accent-color);
+}
+
+.hover-play {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.movie-card:hover .hover-play {
+    opacity: 1;
+}
+
+.movie-info h4 {
+    font-size: 1rem;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-info p {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+}
+
+/* Grid de Canais / Esportes (Horizontais) */
+.channels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.channel-card {
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+
+.channel-card:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.02);
+}
+
+.channel-bg {
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.live-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 4px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+.channel-info {
+    padding: 15px;
+}
+
+.channel-info h4 {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.channel-info p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* Banner Promocional no Final */
+.promo-banner {
+    background: linear-gradient(45deg, #1a0529, #2e0840);
+    padding: 60px 5%;
+    text-align: center;
+    margin: 50px 0;
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.promo-content h2 {
+    font-family: var(--font-display);
+    margin-bottom: 10px;
+    color: var(--accent-color);
+}
+
+.promo-content p {
+    margin-bottom: 25px;
+    color: #ccc;
+}
+
+/* Responsivo da página de produtos */
+@media (max-width: 768px) {
+    .catalog-hero {
+        height: 60vh;
+        background-position: center;
+    }
+    .catalog-content h2 {
+        font-size: 2.2rem;
+    }
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
+    }
+}
+
+/* =========================================
+   NOVO VISUAL: MATCH DAY (ESPORTES)
+   ========================================= */
+.live-sports-section {
+    padding: 40px 5%;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #ff0055;
+    border: 1px solid #ff0055;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.blink-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff0055;
+    border-radius: 50%;
+    animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+.match-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.match-card {
+    height: 220px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+
+.match-card:hover {
+    transform: scale(1.03);
+    border-color: var(--primary-color);
+}
+
+.match-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4); /* Escurece a foto para o texto aparecer */
+    transition: 0.3s;
+}
+
+.match-card:hover .match-bg {
+    transform: scale(1.1);
+    filter: brightness(0.6);
+}
+
+.match-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.league-badge {
+    position: absolute;
+    top: 15px;
+    background: #222;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.teams-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    justify-content: center;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.team-logo {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #333, #111);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1rem;
+    border: 2px solid rgba(255,255,255,0.2);
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255,255,255,0.5);
+}
+
+.team span {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.versus {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    opacity: 0.7;
+}
+
+.btn-watch {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(5px);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: 1px solid rgba(255,255,255,0.3);
+    margin-top: auto; /* Empurra para baixo */
+}
+
+.btn-watch:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.event-title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.event-title h2 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+/* =========================================
+   NOVO VISUAL: VIP PASS (HOLOGRÁFICO)
+   ========================================= */
+.vip-pass-container {
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    background: radial-gradient(circle at center, #1a0529 0%, #050507 70%);
+}
+
+.vip-glass-card {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    background: rgba(20, 20, 25, 0.6);
+    backdrop-filter: blur(20px); /* Efeito de vidro fosco */
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(138, 43, 226, 0.15);
+}
+
+/* Brilho passando pelo card */
+.vip-glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: 0.5s;
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+.icon-crown {
+    font-size: 2.5rem;
+    background: linear-gradient(180deg, #ffd700, #b8860b);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4));
+}
+
+.vip-content h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.vip-subtitle {
+    color: var(--text-gray);
+    margin-bottom: 30px;
+}
+
+.vip-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 30px;
+    margin-bottom: 30px;
+    list-style: none;
+}
+
+.vip-benefits li {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+}
+
+.vip-benefits i {
+    color: var(--primary-color);
+    margin-right: 8px;
+}
+
+.price-tag {
+    display: inline-flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+}
+
+.price-tag small {
+    font-size: 0.8rem;
+    font-family: var(--font-main);
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-vip {
+    display: inline-block;
+    padding: 16px 50px;
+    background: linear-gradient(90deg, #8a2be2, #ff0055);
+    color: white;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+    transition: 0.3s;
+}
+
+.btn-vip:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(255, 0, 85, 0.4);
+}
+
+/* =========================================
+   PÁGINA DE PREÇOS / ASSINATURA
+   ========================================= */
+.pricing-container {
+    padding-top: 100px; /* Espaço do header */
+    padding-bottom: 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.pricing-header h1 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- O SELETOR (SWITCHER) IGUAL A FOTO --- */
+.plan-switcher {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px;
+    border-radius: 50px; /* Formato Pílula */
+    margin-top: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.switch-btn {
+    padding: 12px 30px;
+    border-radius: 40px;
+    border: none;
+    background: transparent;
+    color: #aaa;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+/* Estado Ativo (Roxo brilhante) */
+.switch-btn.active {
+    background: #8a2be2; /* Roxo sólido */
+    color: white;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+}
+
+.switch-btn:hover:not(.active) {
+    color: white;
+}
+
+/* --- GRID DOS PLANOS --- */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card de Preço */
+.pricing-card {
+    background: rgba(20, 20, 25, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    transition: 0.3s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color);
+}
+
+/* Card Destaque (Mais Vendido) */
+.pricing-card.highlight {
+    background: rgba(30, 10, 40, 0.7);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.15);
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.pricing-card.highlight:hover {
+    transform: scale(1.08);
+}
+
+.badge-best {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Tipografia do Preço */
+.pricing-card h3 {
+    color: #ccc;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-family: var(--font-display);
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.price span {
+    font-size: 1rem;
+    color: #888;
+    font-weight: 400;
+}
+
+.features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.features li {
+    margin-bottom: 15px;
+    color: #d0d0d0;
+    font-size: 0.9rem;
+}
+
+.features i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+/* Estilos Específicos para Revenda */
+.credit-amount {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 5px;
+    font-family: var(--font-display);
+}
+
+.price-per-unit {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.total-price {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+.profit-text {
+    color: #00ff88; /* Verde lucro */
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}

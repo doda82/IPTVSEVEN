@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <title>Planos Premium - IPTV SEVEN</title>
+    <link rel="icon" type="image/png" href="./images/Icone-site (2).png" />
+
+    <style>
+        /* CSS EXTRA ESPECÍFICO PARA ESSA PÁGINA */
+        
+        .plan-switcher {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px;
+            border-radius: 50px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .switch-btn {
+            padding: 10px 25px;
+            border-radius: 40px;
+            border: none;
+            background: transparent;
+            color: #aaa;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .switch-btn.active {
+            background: #8a2be2;
+            color: white;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+        }
+
+        .badge-discount {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #00ff88;
+            color: #000;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+            z-index: 5;
+        }
+        
+        .badge-promo {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff0055;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(255, 0, 85, 0.4);
+            z-index: 5;
+            white-space: nowrap;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #666;
+            font-size: 1rem;
+            display: block;
+            margin-bottom: -5px;
+        }
+
+        .active-plan-card {
+            border: 1px solid var(--primary-color);
+            background: linear-gradient(180deg, rgba(20,20,25,0.9) 0%, rgba(138, 43, 226, 0.05) 100%);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .active-price-box {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .ap-item small {
+            display: block;
+            color: #aaa;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+        .ap-item strong {
+            font-size: 1.5rem;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">IPTV SEVEN</div>
+        <button id="menu-toggle" class="menu-toggle-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Canais & Filmes</a></li>
+                <li class="active-nav"><a href="assinaragora.html">Assinar Agora</a></li>
+                <li><a href="contato.html">Suporte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="mobile-menu" class="mobile-menu-container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Canais & Filmes</a></li>
+                <li class="active-nav"><a href="assinaragora.html">Assinar Agora</a></li>
+                <li><a href="contato.html">Suporte</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="pricing-container">
+        <div class="ambient-light"></div>
+        
+        <div class="pricing-header">
+            <h1>ESCOLHA SEU PLANO</h1>
+            <p>Qualidade 4K sem travamentos. Selecione sua categoria:</p>
+
+            <div class="plan-switcher">
+                <button class="switch-btn active" onclick="switchPlan('personal')">USO PESSOAL</button>
+                <button class="switch-btn" onclick="switchPlan('reseller')">PAINEL REVENDA</button>
+                <button class="switch-btn" onclick="switchPlan('active')">PLANOS POR ATIVO</button>
+            </div>
+        </div>
+
+        <div id="personal-plans" class="plans-grid fade-in">
+
+            <div class="pricing-card" style="border-color: #00ff88;">
+                <div class="badge-promo" style="background: #00ff88; color: black;">GRÁTIS</div>
+                <h3>INDIQUE E GANHE</h3>
+                <div class="price" style="font-size: 1.8rem; margin-bottom: 45px;">
+                    1 MÊS OFF
+                </div>
+                <p style="color: #ccc; margin-bottom: 20px; font-size: 0.9rem;">
+                    Trouxe um amigo e ele assinou? Você ganha sua mensalidade na hora.
+                </p>
+                <a href="#" onclick="buyPlan('indique')" class="btn btn-outline" style="color: #00ff88; border-color: #00ff88;">INDICAR AMIGO</a>
+            </div>
+            
+            <div class="pricing-card highlight">
+                <div class="badge-discount">33% OFF</div>
+                <h3>MENSAL PROMO</h3>
+                <div class="price">
+                    <span class="old-price">R$ 29,90</span>
+                    R$ 19,90<span>/mês</span>
+                </div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i> 1 Tela 4K</li>
+                    <li><i class="fas fa-check"></i> Conteúdo completo liberado</li>
+                    <li><i class="fas fa-check"></i> Oferta exclusiva por tempo limitado</li>
+                </ul>
+                <a href="#" onclick="buyPlan('mensal_promo')" class="btn btn-primary">APROVEITAR</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>TRIMESTRAL</h3>
+                <div class="price">R$ 74,90<span>/3 meses</span></div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i> 1 Tela 4K</li>
+                    <li><i class="fas fa-check"></i> Três meses de conforto e praticidade</li>
+                    <li><i class="fas fa-check"></i> Suporte Prioritário</li>
+                </ul>
+                <a href="#" onclick="buyPlan('trimestral')" class="btn btn-outline">ASSINAR</a>
+            </div>
+
+            <div class="pricing-card">
+                <div class="badge-promo" style="background: #8a2be2;">MAIS ASSINADO</div>
+                <h3>SEMESTRAL SMART</h3>
+                <div class="price">R$ 139,90<span>/6 meses</span></div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i> 1 Tela 4K</li>
+                    <li><i class="fas fa-check"></i> Equivalente a R$ 23/mês</li>
+                    <li><i class="fas fa-check"></i> Renovação Automática</li>
+                </ul>
+                <a href="#" onclick="buyPlan('semestral')" class="btn btn-outline">ASSINAR</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>ANUAL VIP</h3>
+                <div class="price">R$ 264,90<span>/ano</span></div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i> 1 Tela 4K</li>
+                    <li><i class="fas fa-check"></i> Equivalente a R$ 21/mês</li>
+                    <li><i class="fas fa-check"></i> Sem fidelidade</li>
+                </ul>
+                <a href="#" onclick="buyPlan('anual')" class="btn btn-outline">ASSINAR</a>
+            </div>
+
+        </div>
+
+        <div id="reseller-plans" class="plans-grid fade-in" style="display: none;">
+            
+            <div class="pricing-card">
+                <h3>INICIANTE</h3>
+                <div class="credit-amount">10 CRÉDITOS</div>
+                <div class="price-per-unit">R$ 11,00 /unid</div>
+                <div class="total-price">Total: R$ 110,00</div>
+                <a href="#" onclick="buyPlan('creditos_10')" class="btn btn-outline">COMPRAR</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>BRONZE</h3>
+                <div class="credit-amount">20 CRÉDITOS</div>
+                <div class="price-per-unit">R$ 10,00 /unid</div>
+                <div class="total-price">Total: R$ 200,00</div>
+                <a href="#" onclick="buyPlan('creditos_20')" class="btn btn-outline">COMPRAR</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>PRATA</h3>
+                <div class="credit-amount">30 CRÉDITOS</div>
+                <div class="price-per-unit">R$ 12,50 /unid</div>
+                <div class="total-price">Total: R$ 375,00</div>
+                <a href="#" onclick="buyPlan('creditos_30')" class="btn btn-outline">COMPRAR</a>
+            </div>
+
+            <div class="pricing-card highlight">
+                <div class="badge-promo">MAIS VENDIDO</div>
+                <h3>OURO</h3>
+                <div class="credit-amount">50 CRÉDITOS</div>
+                <div class="price-per-unit">R$ 9,50 /unid</div>
+                <div class="total-price">Total: R$ 475,00</div>
+                <p class="profit-text">Lucro estimado: R$ 1.000+</p>
+                <a href="#" onclick="buyPlan('creditos_50')" class="btn btn-primary">COMPRAR AGORA</a>
+            </div>
+
+             <div class="pricing-card">
+                <h3>DIAMANTE</h3>
+                <div class="credit-amount">100 CRÉDITOS</div>
+                <div class="price-per-unit">R$ 8,80 /unid</div>
+                <div class="total-price">Total: R$ 880,00</div>
+                <a href="#" onclick="buyPlan('creditos_100')" class="btn btn-outline">COMPRAR</a>
+            </div>
+
+        </div>
+
+        <div id="active-plans" class="plans-grid fade-in" style="display: none; justify-content: center;">
+            
+            <div class="pricing-card active-plan-card">
+                <div class="badge-promo" style="background: var(--primary-color);">B2B FLEXÍVEL</div>
+                <h3>PÓS-PAGO POR ATIVO</h3>
+                <p style="color: #ccc; margin-bottom: 20px;">Para quem deseja escalar a operação sem investir em grandes estoques de crédito.</p>
+                
+                <div class="active-price-box">
+                    <div class="ap-item">
+                        <small>Taxa de mensalidade</small>
+                        <strong>R$ 70,00</strong>
+                    </div>
+                    <div class="ap-item">
+                        <small>Custo por Ativo</small>
+                        <strong style="color: #00ff88;">R$ 8,50</strong>
+                    </div>
+                </div>
+
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Sem compra mínima de créditos</li>
+                    <li><i class="fas fa-check-circle"></i> Painel de Gestão Completo</li>
+                    <li><i class="fas fa-check-circle"></i> Renovou o cliente, pagou o ativo</li>
+                    <li><i class="fas fa-check-circle"></i> Liberação Imediata</li>
+                </ul>
+                <a href="#" onclick="buyPlan('ativo')" class="btn btn-primary" style="width: 100%;">CONTRATAR</a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+    
+    <script>
+        // 1. Função para trocar as abas
+        function switchPlan(type) {
+            const btns = document.querySelectorAll('.switch-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            
+            const personalPlans = document.getElementById('personal-plans');
+            const resellerPlans = document.getElementById('reseller-plans');
+            const activePlans = document.getElementById('active-plans');
+
+            personalPlans.style.display = 'none';
+            resellerPlans.style.display = 'none';
+            activePlans.style.display = 'none';
+
+            if (type === 'personal') {
+                btns[0].classList.add('active');
+                personalPlans.style.display = 'grid';
+            } else if (type === 'reseller') {
+                btns[1].classList.add('active');
+                resellerPlans.style.display = 'grid';
+            } else if (type === 'active') {
+                btns[2].classList.add('active');
+                activePlans.style.display = 'grid'; 
+            }
+        }
+
+        // 2. Função MESTRE para comprar com mensagem personalizada
+        function buyPlan(planType) {
+            const numbers = ["5531987002923", "5531991814249"];
+            let msg = "";
+
+            // Mensagens para cada plano
+            switch(planType) {
+                // PESSOAIS
+                case 'indique': msg = "Olá! Quero saber como funciona a promoção *INDIQUE E GANHE*."; break;
+                case 'mensal_promo': msg = "Olá! Quero garantir a *PROMOÇÃO MENSAL (33% OFF)* de R$ 19,90."; break;
+                case 'trimestral': msg = "Olá! Quero assinar o plano *TRIMESTRAL* de R$ 74,90."; break;
+                case 'semestral': msg = "Olá! Quero assinar o plano *SEMESTRAL SMART* de R$ 139,90."; break;
+                case 'anual': msg = "Olá! Quero assinar o plano *ANUAL VIP* de R$ 264,90."; break;
+                
+                // REVENDA
+                case 'creditos_10': msg = "Olá! Quero iniciar a revenda com o pacote *INICIANTE (10 Créditos)*."; break;
+                case 'creditos_20': msg = "Olá! Quero comprar o pacote revenda *BRONZE (20 Créditos)*."; break;
+                case 'creditos_30': msg = "Olá! Quero comprar o pacote revenda *PRATA (30 Créditos)*."; break;
+                case 'creditos_50': msg = "Olá! Quero o pacote BEST SELLER *OURO (50 Créditos)* para lucrar alto."; break;
+                case 'creditos_100': msg = "Olá! Quero comprar o pacote revenda *DIAMANTE (100 Créditos)*."; break;
+                
+                // ATIVO
+                case 'ativo': msg = "Olá! Tenho interesse em contratar o *PAINEL PÓS-PAGO (Por Ativo)*."; break;
+            }
+
+            // 3. Rotação de números (Load Balancer)
+            let lastIndex = localStorage.getItem('lastWppIndex');
+            let nextIndex;
+            
+            if (lastIndex === null) {
+                nextIndex = 0;
+            } else {
+                nextIndex = parseInt(lastIndex) === 0 ? 1 : 0;
+            }
+
+            localStorage.setItem('lastWppIndex', nextIndex);
+
+            // 4. Envia
+            window.open(`https://wa.me/${numbers[nextIndex]}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
