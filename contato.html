@@ -247,17 +247,14 @@
     
     <script>
         function redirectToWhatsapp() {
-            const numbers = ["5531987002923", "5531991814249"];
+            // Seu número fixo novo
+            const number = "5531973130470"; 
+            
+            // Mensagem padrão
             const message = encodeURIComponent("Olá! Vim pela Central de Ajuda do site e preciso de suporte.");
 
-            let lastIndex = localStorage.getItem('lastWppIndex');
-            let nextIndex;
-            
-            if (lastIndex === null) { nextIndex = 0; } 
-            else { nextIndex = parseInt(lastIndex) === 0 ? 1 : 0; }
-
-            localStorage.setItem('lastWppIndex', nextIndex);
-            window.open(`https://wa.me/${numbers[nextIndex]}?text=${message}`, '_blank');
+            // Abre diretamente o WhatsApp com o número e a mensagem
+            window.open(`https://wa.me/${number}?text=${message}`, '_blank');
         }
     </script>
 </body>
