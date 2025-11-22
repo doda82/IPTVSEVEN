@@ -14,6 +14,30 @@
     <link rel="icon" type="image/png" href="./images/Icone-site (2).png" />
 
     <style>
+        /* --- CORREÇÃO PARA O RODAPÉ NÃO SUBIR --- */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* --- FUNDO DO MENU MOBILE (Igual as outras páginas) --- */
+        .mobile-menu-container {
+            background-image: url('images/natal.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(5, 5, 10, 0.95); 
+            background-blend-mode: overlay;
+        }
+
         /* CSS ESPECÍFICO DA PÁGINA DE SUPORTE (Estilo 3D Glass) */
         .support-container {
             min-height: 85vh;
@@ -223,28 +247,16 @@
     
     <script>
         function redirectToWhatsapp() {
-            // Seus números
-            const numbers = [
-                "5531987002923", 
-                "5531991814249"
-            ];
-
-            // Mensagem específica para a página de suporte
+            const numbers = ["5531987002923", "5531991814249"];
             const message = encodeURIComponent("Olá! Vim pela Central de Ajuda do site e preciso de suporte.");
 
-            // Lógica de Rotação
             let lastIndex = localStorage.getItem('lastWppIndex');
             let nextIndex;
             
-            if (lastIndex === null) {
-                nextIndex = 0;
-            } else {
-                nextIndex = parseInt(lastIndex) === 0 ? 1 : 0;
-            }
+            if (lastIndex === null) { nextIndex = 0; } 
+            else { nextIndex = parseInt(lastIndex) === 0 ? 1 : 0; }
 
             localStorage.setItem('lastWppIndex', nextIndex);
-
-            // Abre o WhatsApp
             window.open(`https://wa.me/${numbers[nextIndex]}?text=${message}`, '_blank');
         }
     </script>
