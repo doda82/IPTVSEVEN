@@ -17,6 +17,17 @@
     <style>
         /* CSS EXTRA ESPECÍFICO PARA ESSA PÁGINA */
         
+        /* --- FUNDO DO MENU MOBILE (ADICIONADO) --- */
+        .mobile-menu-container {
+            /* AQUI VOCÊ MUDA A FOTO (Pode ser link de imagem ou de GIF) */
+            background-image: url('images/natal.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(5, 5, 10, 0.95); 
+            background-blend-mode: overlay;
+        }
+
         .plan-switcher {
             display: inline-flex;
             background: rgba(255, 255, 255, 0.05);
@@ -307,7 +318,7 @@
     <script src="script.js"></script>
     
     <script>
-        // 1. Função para trocar as abas
+        // Função para trocar as abas (Pessoal, Revenda, Ativo)
         function switchPlan(type) {
             const btns = document.querySelectorAll('.switch-btn');
             btns.forEach(btn => btn.classList.remove('active'));
@@ -332,32 +343,35 @@
             }
         }
 
-        // 2. Função MESTRE para comprar com mensagem personalizada
+        // Função MESTRE para comprar os planos com mensagem personalizada
         function buyPlan(planType) {
             const numbers = ["5531987002923", "5531991814249"];
             let msg = "";
 
-            // Mensagens para cada plano
+            // Define a mensagem baseada no botão clicado
             switch(planType) {
-                // PESSOAIS
+                // Planos Pessoais
                 case 'indique': msg = "Olá! Quero saber como funciona a promoção *INDIQUE E GANHE*."; break;
                 case 'mensal_promo': msg = "Olá! Quero garantir a *PROMOÇÃO MENSAL (33% OFF)* de R$ 19,90."; break;
                 case 'trimestral': msg = "Olá! Quero assinar o plano *TRIMESTRAL* de R$ 74,90."; break;
                 case 'semestral': msg = "Olá! Quero assinar o plano *SEMESTRAL SMART* de R$ 139,90."; break;
                 case 'anual': msg = "Olá! Quero assinar o plano *ANUAL VIP* de R$ 264,90."; break;
                 
-                // REVENDA
+                // Planos Revenda
                 case 'creditos_10': msg = "Olá! Quero iniciar a revenda com o pacote *INICIANTE (10 Créditos)*."; break;
                 case 'creditos_20': msg = "Olá! Quero comprar o pacote revenda *BRONZE (20 Créditos)*."; break;
                 case 'creditos_30': msg = "Olá! Quero comprar o pacote revenda *PRATA (30 Créditos)*."; break;
                 case 'creditos_50': msg = "Olá! Quero o pacote BEST SELLER *OURO (50 Créditos)* para lucrar alto."; break;
                 case 'creditos_100': msg = "Olá! Quero comprar o pacote revenda *DIAMANTE (100 Créditos)*."; break;
                 
-                // ATIVO
+                // Plano Por Ativo
                 case 'ativo': msg = "Olá! Tenho interesse em contratar o *PAINEL PÓS-PAGO (Por Ativo)*."; break;
+                
+                // Suporte Geral (Se houver botão na página)
+                case 'suporte_geral': msg = "Olá! Vim pelo site da IPTV SEVEN e preciso de ajuda."; break;
             }
 
-            // 3. Rotação de números (Load Balancer)
+            // Rotação de números (Load Balancer)
             let lastIndex = localStorage.getItem('lastWppIndex');
             let nextIndex;
             
@@ -369,7 +383,7 @@
 
             localStorage.setItem('lastWppIndex', nextIndex);
 
-            // 4. Envia
+            // Abre o WhatsApp
             window.open(`https://wa.me/${numbers[nextIndex]}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
