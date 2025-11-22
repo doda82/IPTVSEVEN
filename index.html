@@ -279,28 +279,26 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
     <script>
         function redirectToWhatsapp(tipo) {
-            const numbers = ["5531987002923", "5531991814249"];
+            // Seu número fixo
+            const number = "5531973130470";
             let messageText = "";
             
+            // Verifica se o clique veio do botão de Teste Grátis
             if (tipo === 'teste') {
                 messageText = "Olá! Vim pelo site e quero solicitar meu TESTE GRÁTIS.";
             } else {
                 messageText = "Olá! Vim pelo site da IPTV SEVEN e gostaria de mais informações.";
             }
             
+            // Prepara a mensagem para o link
             const message = encodeURIComponent(messageText);
-            let lastIndex = localStorage.getItem('lastWppIndex');
-            let nextIndex;
-            
-            if (lastIndex === null) { nextIndex = 0; } 
-            else { nextIndex = parseInt(lastIndex) === 0 ? 1 : 0; }
 
-            localStorage.setItem('lastWppIndex', nextIndex);
-            window.open(`https://wa.me/${numbers[nextIndex]}?text=${message}`, '_blank');
+            // Abre o WhatsApp direto
+            window.open(`https://wa.me/${number}?text=${message}`, '_blank');
         }
     </script>
 </body>
