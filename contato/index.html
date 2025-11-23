@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
     
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <title>Suporte Premium - IPTV SEVEN</title>
-    <link rel="icon" type="image/png" href="./images/Icone-site (2).png" />
+    <link rel="icon" type="image/png" href="/images/Icone-site (2).png" />
 
     <style>
         /* --- CORREÇÃO PARA O RODAPÉ NÃO SUBIR --- */
@@ -28,9 +29,10 @@
             justify-content: center;
         }
 
-        /* --- FUNDO DO MENU MOBILE (Igual as outras páginas) --- */
+        /* --- FUNDO DO MENU MOBILE --- */
         .mobile-menu-container {
-            background-image: url('images/natal.jpg');
+            /* CORRIGIDO: Adicionei a barra / na imagem de fundo */
+            background-image: url('/images/natal.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -180,7 +182,10 @@
 <body>
 
     <header>
-        <div class="logo">IPTV SEVEN</div>
+        <a href="/" style="text-decoration: none; color: white;">
+            <div class="logo">IPTV SEVEN</div>
+        </a>
+        
         <button id="menu-toggle" class="menu-toggle-btn">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -188,10 +193,10 @@
         </button>
         <nav class="desktop-nav">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="produtos.html">Canais & Filmes</a></li>
-                <li><a href="assinaragora.html">Assinar Agora</a></li>
-                <li class="active-nav"><a href="contato.html">Suporte</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/produtos/">Canais & Filmes</a></li>
+                <li><a href="/assinaragora/">Assinar Agora</a></li>
+                <li class="active-nav"><a href="/contato/">Suporte</a></li>
             </ul>
         </nav>
     </header>
@@ -199,10 +204,10 @@
     <div id="mobile-menu" class="mobile-menu-container">
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="produtos.html">Canais & Filmes</a></li>
-                <li><a href="assinaragora.html">Assinar Agora</a></li>
-                <li class="active-nav"><a href="contato.html">Suporte</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/produtos/">Canais & Filmes</a></li>
+                <li><a href="/assinaragora/">Assinar Agora</a></li>
+                <li class="active-nav"><a href="/contato/">Suporte</a></li>
             </ul>
         </nav>
     </div>
@@ -243,7 +248,7 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
     
     <script>
         function redirectToWhatsapp() {
