@@ -8,19 +8,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
     
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <title>Planos Premium - IPTV SEVEN</title>
-    <link rel="icon" type="image/png" href="./images/Icone-site (2).png" />
+    <link rel="icon" type="image/png" href="/images/Icone-site (2).png" />
 
     <style>
         /* CSS EXTRA ESPECÍFICO PARA ESSA PÁGINA */
         
         /* --- FUNDO DO MENU MOBILE (ADICIONADO) --- */
         .mobile-menu-container {
-            /* AQUI VOCÊ MUDA A FOTO (Pode ser link de imagem ou de GIF) */
-            background-image: url('images/natal.jpg');
+            /* CORRIGIDO: Adicionei a barra / na imagem de fundo */
+            background-image: url('/images/natal.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -132,7 +132,10 @@
 <body>
 
     <header>
-        <div class="logo">IPTV SEVEN</div>
+        <a href="/" style="text-decoration: none; color: white;">
+            <div class="logo">IPTV SEVEN</div>
+        </a>
+        
         <button id="menu-toggle" class="menu-toggle-btn">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -140,10 +143,10 @@
         </button>
         <nav class="desktop-nav">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="produtos.html">Canais & Filmes</a></li>
-                <li class="active-nav"><a href="assinaragora.html">Assinar Agora</a></li>
-                <li><a href="contato.html">Suporte</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/produtos/">Canais & Filmes</a></li>
+                <li class="active-nav"><a href="/assinaragora/">Assinar Agora</a></li>
+                <li><a href="/contato/">Suporte</a></li>
             </ul>
         </nav>
     </header>
@@ -151,10 +154,10 @@
     <div id="mobile-menu" class="mobile-menu-container">
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="produtos.html">Canais & Filmes</a></li>
-                <li class="active-nav"><a href="assinaragora.html">Assinar Agora</a></li>
-                <li><a href="contato.html">Suporte</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/produtos/">Canais & Filmes</a></li>
+                <li class="active-nav"><a href="/assinaragora/">Assinar Agora</a></li>
+                <li><a href="/contato/">Suporte</a></li>
             </ul>
         </nav>
     </div>
@@ -315,10 +318,10 @@
 
     </main>
 
-<script src="script.js"></script>
+    <script src="/script.js"></script>
     
     <script>
-        // Função para trocar as abas (Pessoal, Revenda, Ativo) - MANTIDA IGUAL
+        // Função para trocar as abas (Pessoal, Revenda, Ativo)
         function switchPlan(type) {
             const btns = document.querySelectorAll('.switch-btn');
             btns.forEach(btn => btn.classList.remove('active'));
@@ -343,7 +346,7 @@
             }
         }
 
-        // Função ATUALIZADA com número único
+        // Função para os links do WhatsApp
         function buyPlan(planType) {
             // Número fixo único
             const number = "5531973130470";
