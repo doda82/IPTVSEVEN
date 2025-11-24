@@ -19,6 +19,13 @@
 
         body {
             background-color: #050507; 
+            /* AQUI: Coloquei o banner no fundo do site todo para não ficar buraco */
+            background: linear-gradient(to bottom, rgba(5, 5, 7, 0.5) 0%, #050507 100%),
+                        url('https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg');
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed; /* Efeito Premium: O fundo fica parado quando rola */
+            
             overflow-x: hidden;
             margin: 0;
             padding: 0;
@@ -27,23 +34,21 @@
             min-height: 100vh;
         }
 
-        /* --- HEADER INVISÍVEL (TRANSPARENTE) --- */
+        /* --- HEADER INVISÍVEL --- */
         header {
-            position: absolute; /* Isso faz ele flutuar por cima do banner */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            /* Degradê suave só para o texto não sumir se o fundo for claro */
             background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
-            z-index: 1000; /* Garante que fique na frente de tudo */
+            z-index: 1000;
             border: none;
         }
 
-        /* --- CONFIGURAÇÃO DO FUNDO DO MENU HAMBÚRGUER --- */
+        /* --- MENU MOBILE --- */
         .mobile-menu-container {
             background: linear-gradient(rgba(10, 5, 20, 0.9), rgba(10, 5, 20, 0.95)), 
                         url('images/natal.jpg'); 
-            
             background-size: cover;
             background-position: center;
         }
@@ -51,16 +56,12 @@
         /* HERO SECTION */
         .hero-container {
             position: relative;
-            /* Banner Godzilla x Kong */
-            background: linear-gradient(to bottom, rgba(5, 5, 7, 0.3) 0%, #050507 100%),
-                        url('https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg');
-            background-size: cover;
-            background-position: center top;
+            /* Removi o background daqui pois agora está no body */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex: 1; /* Ocupa o espaço restante para empurrar o rodapé */
+            flex: 1;
             padding-top: 80px;
             width: 100%;
         }
@@ -107,6 +108,7 @@
             max-width: 700px;
             margin: 0 auto 40px auto;
             font-weight: 300;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8); /* Sombra para ler melhor */
         }
         
         .hero-description strong {
@@ -121,7 +123,6 @@
             justify-content: center;
         }
 
-        /* Botão Roxo Derretendo */
         .btn-liquid-purple {
             position: relative;
             padding: 18px 45px;
@@ -133,19 +134,14 @@
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 
-                0 0 15px rgba(138, 43, 226, 0.5),
-                0 5px 30px rgba(190, 46, 221, 0.4),
-                inset 0 0 15px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
             overflow: hidden;
             z-index: 1;
         }
 
         .btn-liquid-purple:hover {
-            box-shadow: 
-                0 0 30px rgba(138, 43, 226, 0.8),
-                0 10px 50px rgba(190, 46, 221, 0.6);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.8);
             transform: scale(1.05) translateY(-3px);
         }
 
@@ -168,12 +164,11 @@
 
         /* Ajustes Mobile */
         @media (max-width: 768px) {
-            .hero-container { background-position: center center; }
+            body { background-position: center center; }
             .hero-content h1 { font-size: 2.8rem; }
             .hero-buttons { flex-direction: column; padding: 0 40px; gap: 15px; }
             .btn-liquid-purple, .btn-glass { width: 100%; }
             
-            /* Galeria scrollável no mobile */
             .gallery-track { 
                 justify-content: flex-start;
                 overflow-x: auto;
@@ -182,7 +177,6 @@
                 padding-bottom: 30px;
             }
         }
-
     </style>
 </head>
 <body>
@@ -310,25 +304,20 @@
         </div>
     </footer>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
     <script>
         function redirectToWhatsapp(tipo) {
-            // Seu número fixo
             const number = "5531973130470";
             let messageText = "";
             
-            // Verifica se o clique veio do botão de Teste Grátis
             if (tipo === 'teste') {
                 messageText = "Olá! Vim pelo site e quero solicitar meu TESTE GRÁTIS.";
             } else {
                 messageText = "Olá! Vim pelo site da IPTV SEVEN e gostaria de mais informações.";
             }
             
-            // Prepara a mensagem para o link
             const message = encodeURIComponent(messageText);
-
-            // Abre o WhatsApp direto
             window.open(`https://wa.me/${number}?text=${message}`, '_blank');
         }
     </script>
