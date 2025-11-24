@@ -15,7 +15,7 @@
     <link rel="icon" type="image/png" href="../images/Icone-site (2).png" />
 
     <style>
-        /* CSS ESPECÍFICO DESTA PÁGINA (TEXTOS) */
+        /* CSS ESPECÍFICO DESTA PÁGINA (PREMIUM) */
         
         body {
             display: flex;
@@ -34,79 +34,119 @@
         }
 
         .terms-container {
-            padding: 120px 20px 60px 20px;
-            max-width: 900px;
+            padding: 120px 20px 80px 20px;
+            max-width: 950px;
             margin: 0 auto;
             flex: 1;
+            display: flex;
+            align-items: center;
         }
 
+        /* Container estilo "Vidro" Melhorado */
         .terms-wrapper {
-            background: rgba(20, 20, 25, 0.95);
-            border: 1px solid rgba(138, 43, 226, 0.3); /* Borda Roxa sutil */
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
+            background: rgba(20, 20, 25, 0.85); /* Mais transparência */
+            border: 1px solid rgba(138, 43, 226, 0.5); /* Borda Roxa mais forte */
+            border-radius: 20px;
+            padding: 50px;
+            /* Sombreamento com brilho roxo */
+            box-shadow: 0 0 40px rgba(138, 43, 226, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
         }
 
         .terms-header {
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #8a2be2;
-            padding-bottom: 20px;
+            margin-bottom: 50px;
+            border-bottom: 2px solid rgba(138, 43, 226, 0.5);
+            padding-bottom: 30px;
         }
 
         .terms-header h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            /* Degradê no título principal */
+            background: linear-gradient(180deg, #fff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .terms-header p {
             color: #aaa;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            font-weight: 300;
         }
 
         .terms-section {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
+        /* Títulos das seções com a nova cor */
         .terms-section h2 {
-            color: #00ff88; /* Verde Neon para destacar tópicos */
+            color: #ff0055; /* ROSA NEON DA MARCA */
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            /* Leve brilho no texto */
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
+        }
+        
+        .terms-section h2 i {
+            font-size: 1.3rem;
         }
 
         .terms-section p, .terms-section li {
-            color: #ccc;
+            color: #d0d0d0; /* Texto ligeiramente mais claro */
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin-bottom: 10px;
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 15px;
             text-align: justify;
         }
 
-        .terms-section ul {
-            padding-left: 20px;
-            margin-bottom: 15px;
+        .brand-highlight {
+            color: #8a2be2;
+            font-weight: 700;
         }
 
+        .terms-section ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .terms-section li {
+            margin-bottom: 10px;
+        }
+
+        /* Caixa de alerta personalizada */
         .alert-box {
-            background: rgba(138, 43, 226, 0.1);
-            border-left: 4px solid #8a2be2;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 5px 5px 0;
+            background: rgba(255, 0, 85, 0.1); /* Fundo rosa bem suave */
+            border-left: 4px solid #ff0055; /* Borda Rosa Neon */
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        .alert-box i {
+            color: #ff0055;
+            font-size: 1.2rem;
+            margin-top: 3px;
         }
 
         @media (max-width: 768px) {
-            .terms-wrapper { padding: 20px; }
-            .terms-header h1 { font-size: 1.8rem; }
+            .terms-container { padding: 100px 15px 40px 15px; }
+            .terms-wrapper { padding: 25px; }
+            .terms-header h1 { font-size: 2rem; }
+            .terms-section h2 { font-size: 1.3rem; }
+            .terms-section p, .terms-section li { font-size: 0.9rem; text-align: left; }
         }
     </style>
 </head>
@@ -147,50 +187,55 @@
             
             <div class="terms-header">
                 <h1>TERMOS E PRIVACIDADE</h1>
-                <p>Última atualização: Novembro de 2025</p>
+                <p>Transparência e compromisso com você. | Última atualização: Novembro de 2025</p>
             </div>
 
             <div class="terms-section">
-                <h2><i class="fas fa-shield-alt"></i> 1. Visão Geral</h2>
-                <p>Bem-vindo ao <strong>IPTV SEVEN</strong>. Ao acessar nosso catálogo e adquirir nossos serviços digitais, você concorda com os termos descritos abaixo. Nosso compromisso é oferecer acesso de alta qualidade a conteúdos de streaming, prezando pela transparência e estabilidade.</p>
+                <h2><i class="fas fa-shield-alt"></i> 1. Visão Geral do Serviço</h2>
+                <p>Bem-vindo à <span class="brand-highlight">IPTV SEVEN</span>. Ao acessar nosso catálogo premium e adquirir nossos serviços digitais, você concorda com os termos descritos neste documento. Nosso compromisso primordial é oferecer acesso de altíssima qualidade a conteúdos de streaming, prezando sempre pela estabilidade, segurança e transparência na relação com nossos clientes.</p>
             </div>
 
             <div class="terms-section">
-                <h2><i class="fas fa-user-lock"></i> 2. Privacidade e Dados (LGPD)</h2>
-                <p>Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), garantimos que:</p>
+                <h2><i class="fas fa-user-lock"></i> 2. Privacidade e Proteção de Dados (LGPD)</h2>
+                <p>Levamos sua privacidade a sério. Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), garantimos que:</p>
                 <ul>
-                    <li>Seus dados (como número de WhatsApp e nome) são utilizados <strong>estritamente</strong> para a liberação do acesso e suporte técnico.</li>
-                    <li>Não compartilhamos, vendemos ou alugamos suas informações para terceiros.</li>
-                    <li>Não armazenamos dados sensíveis de pagamento (como número de cartão de crédito) em nosso site. Todas as transações são criptografadas e processadas externamente.</li>
+                    <li>Seus dados pessoais (como número de WhatsApp e nome) são utilizados <strong>estritamente</strong> para a liberação do acesso, envio de credenciais e suporte técnico.</li>
+                    <li><strong>Não</strong> compartilhamos, vendemos ou alugamos suas informações para terceiros sob nenhuma hipótese.</li>
+                    <li><strong>Não</strong> armazenamos dados sensíveis de pagamento (como números de cartão de crédito) em nossos servidores. Todas as transações são processadas por gateways de pagamento externos e seguros.</li>
                 </ul>
             </div>
 
             <div class="terms-section">
-                <h2><i class="fas fa-wifi"></i> 3. Serviço e Disponibilidade</h2>
-                <p>O IPTV SEVEN atua fornecendo credenciais de acesso a servidores de streaming. Embora nos esforcemos para manter 99.9% de uptime (disponibilidade):</p>
+                <h2><i class="fas fa-wifi"></i> 3. Requisitos e Disponibilidade</h2>
+                <p>A IPTV SEVEN fornece credenciais de acesso a servidores de streaming de alta performance. Embora nossa infraestrutura mantenha 99.9% de uptime (disponibilidade), é crucial entender que:</p>
+                
                 <div class="alert-box">
-                    <strong>Importante:</strong> A qualidade da transmissão depende diretamente da estabilidade da internet do usuário. Recomendamos conexão mínima de 10MB para canais HD/FHD e 30MB para conteúdos 4K.
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <strong>Requisito Técnico:</strong> A qualidade final da transmissão (sem travamentos) depende diretamente da estabilidade e velocidade da internet do usuário. Recomendamos uma conexão fibra óptica de no mínimo <strong>15MB para conteúdos FHD</strong> e <strong>50MB para conteúdos 4K</strong>.
+                    </div>
                 </div>
             </div>
 
             <div class="terms-section">
-                <h2><i class="fas fa-money-bill-wave"></i> 4. Pagamentos e Entrega</h2>
-                <p>Trabalhamos com o modelo pré-pago e renovação manual (sem cobrança surpresa no seu cartão).</p>
+                <h2><i class="fas fa-hand-holding-usd"></i> 4. Pagamentos e Liberação</h2>
+                <p>Operamos com um modelo pré-pago e transparente, sem letras miúdas.</p>
                 <ul>
-                    <li><strong>Métodos Aceitos:</strong> Pix (aprovação imediata), Boleto e Transferência.</li>
-                    <li><strong>Prazo de Entrega:</strong> Após a confirmação do pagamento, as credenciais (usuário e senha) são enviadas imediatamente via WhatsApp ou E-mail cadastrado.</li>
+                    <li><strong>Sem Cobrança Automática:</strong> Nossos planos pessoais não possuem renovação automática no cartão. Você decide quando renovar.</li>
+                    <li><strong>Métodos Seguros:</strong> Aceitamos Pix (com aprovação e liberação imediatas), Boleto e Transferência Bancária.</li>
+                    <li><strong>Entrega Imediata:</strong> Após a confirmação automática do pagamento via Pix, suas credenciais (usuário e senha) são enviadas instantaneamente para o seu WhatsApp ou E-mail cadastrado.</li>
                 </ul>
             </div>
 
             <div class="terms-section">
-                <h2><i class="fas fa-undo"></i> 5. Testes e Reembolso</h2>
-                <p>Para garantir sua satisfação total, oferecemos um <strong>TESTE GRÁTIS</strong> antes de qualquer contratação. Recomendamos que o usuário utilize este período para verificar a compatibilidade com seu dispositivo e internet.</p>
-                <p>Conforme o Código de Defesa do Consumidor, garantimos o suporte total em caso de falhas técnicas comprovadas que não possam ser solucionadas por nossa equipe.</p>
+                <h2><i class="fas fa-undo-alt"></i> 5. Teste Grátis e Política de Reembolso</h2>
+                <p>Confiamos na qualidade do nosso serviço. Por isso, oferecemos um <strong>TESTE GRÁTIS</strong> antes de qualquer contratação. Recomendamos fortemente que o usuário utilize este período para verificar a compatibilidade com seu dispositivo e a qualidade da sua internet.</p>
+                <p>Em alinhamento com o Código de Defesa do Consumidor, garantimos o suporte total e, se aplicável, o reembolso em casos de falhas técnicas comprovadas na origem do nosso servidor que não possam ser solucionadas por nossa equipe técnica.</p>
             </div>
 
             <div class="terms-section">
-                <h2><i class="fas fa-headset"></i> 6. Suporte Técnico</h2>
-                <p>Nosso atendimento funciona todos os dias para auxiliar na configuração em Smart TVs, TV Box, Celulares e Computadores. O canal oficial de comunicação é exclusivamente via WhatsApp ou Telegram indicados neste site.</p>
+                <h2><i class="fas fa-headset"></i> 6. Suporte e Atendimento</h2>
+                <p>Nossa equipe de especialistas está disponível todos os dias para auxiliar na configuração em Smart TVs, TV Box, Celulares, Computadores e outros dispositivos compatíveis. O canal oficial de comunicação para suporte ágil é exclusivamente através dos links de WhatsApp ou Telegram indicados na nossa página de Suporte.</p>
             </div>
 
         </div>
@@ -200,7 +245,8 @@
         <div class="footer-container">
             
             <div class="footer-section left">
-                <a href="#">Termos de Uso</a> <span class="sep">•</span>
+                <a href="#">Termos de Uso</a>
+                <span class="sep">•</span>
                 <a href="../contato/">Suporte</a>
             </div>
 
