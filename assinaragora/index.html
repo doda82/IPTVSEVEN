@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <script>
+        if (window.location.pathname.endsWith("index.html")) {
+            var newPath = window.location.pathname.replace("index.html", "");
+            window.history.replaceState(null, "", newPath);
+        }
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
@@ -17,9 +24,13 @@
     <style>
         /* CSS EXTRA ESPECÍFICO PARA ESSA PÁGINA */
         
-        /* --- FUNDO DO MENU MOBILE (ADICIONADO) --- */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
         .mobile-menu-container {
-            /* CORREÇÃO: Link com .. para voltar uma pasta */
             background-image: url('../images/natal.jpg');
             background-size: cover;
             background-position: center;
@@ -349,7 +360,6 @@
     <script src="../script.js"></script>
     
     <script>
-        // Função para trocar as abas (Pessoal, Revenda, Ativo)
         function switchPlan(type) {
             const btns = document.querySelectorAll('.switch-btn');
             btns.forEach(btn => btn.classList.remove('active'));
@@ -374,36 +384,25 @@
             }
         }
 
-        // Função para os links do WhatsApp
         function buyPlan(planType) {
-            // Número fixo único
             const number = "5531973130470";
             let msg = "";
 
-            // Define a mensagem baseada no botão clicado
             switch(planType) {
-                // Planos Pessoais
                 case 'indique': msg = "Olá! Quero saber como funciona a promoção *INDIQUE E GANHE*."; break;
                 case 'mensal_promo': msg = "Olá! Quero garantir a *PROMOÇÃO MENSAL (33% OFF)* de R$ 19,90."; break;
                 case 'trimestral': msg = "Olá! Quero assinar o plano *TRIMESTRAL* de R$ 74,90."; break;
                 case 'semestral': msg = "Olá! Quero assinar o plano *SEMESTRAL SMART* de R$ 139,90."; break;
                 case 'anual': msg = "Olá! Quero assinar o plano *ANUAL VIP* de R$ 264,90."; break;
-                
-                // Planos Revenda
                 case 'creditos_10': msg = "Olá! Quero iniciar a revenda com o pacote *INICIANTE (10 Créditos)*."; break;
                 case 'creditos_20': msg = "Olá! Quero comprar o pacote revenda *BRONZE (20 Créditos)*."; break;
                 case 'creditos_30': msg = "Olá! Quero comprar o pacote revenda *PRATA (30 Créditos)*."; break;
                 case 'creditos_50': msg = "Olá! Quero o pacote BEST SELLER *OURO (50 Créditos)* para lucrar alto."; break;
                 case 'creditos_100': msg = "Olá! Quero comprar o pacote revenda *DIAMANTE (100 Créditos)*."; break;
-                
-                // Plano Por Ativo
                 case 'ativo': msg = "Olá! Tenho interesse em contratar o *PAINEL PÓS-PAGO (Por Ativo)*."; break;
-                
-                // Suporte Geral
                 case 'suporte_geral': msg = "Olá! Vim pelo site da IPTV SEVEN e preciso de ajuda."; break;
             }
 
-            // Abre o WhatsApp diretamente no número fixo
             window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
