@@ -31,7 +31,7 @@
 
         /* --- FUNDO DO MENU MOBILE --- */
         .mobile-menu-container {
-            /* CORRIGIDO: Adicionei a barra / no início da imagem */
+            /* CORRIGIDO: Adicionei a barra / */
             background-image: url('/images/natal.jpg');
             background-size: cover;
             background-position: center;
@@ -42,7 +42,7 @@
 
         /* --- CORREÇÕES GERAIS PARA LAYOUT --- */
         body, html {
-            overflow-x: hidden; /* Impede que o site fique "dançando" para os lados */
+            overflow-x: hidden;
             width: 100%;
         }
 
@@ -66,9 +66,8 @@
 
         /* --- OTIMIZAÇÃO ESPECIAL PARA MOBILE (CELULAR) --- */
         @media (max-width: 768px) {
-            /* Ajusta o Hero (Banner Venom) para não ficar gigante */
             .catalog-hero {
-                height: 60vh; /* Ocupa 60% da tela apenas */
+                height: 60vh;
                 background-position: center top;
             }
             
@@ -78,23 +77,22 @@
             }
 
             .catalog-content h2 {
-                font-size: 2.2rem; /* Diminui a fonte do título */
+                font-size: 2.2rem;
             }
 
-            /* Arruma a grade de filmes para ficar igual App (2 colunas) */
             .movie-grid {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr); /* 2 filmes por linha */
-                gap: 15px; /* Espaço menor entre eles */
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
                 padding: 0 10px;
             }
 
             .movie-card .poster {
-                height: 220px; /* Altura fixa para não quebrar */
+                height: 220px;
             }
 
             .movie-info h4 {
-                font-size: 0.85rem; /* Fonte ajustada */
+                font-size: 0.85rem;
                 white-space: normal !important; 
                 overflow: visible !important;
                 text-overflow: clip !important;
@@ -108,12 +106,10 @@
                 margin-top: 2px;
             }
 
-            /* Ajuste nos cards de Esporte */
             .match-card {
                 margin-bottom: 20px;
             }
 
-            /* Ajuste na oferta VIP final */
             .vip-action-row {
                 gap: 15px;
             }
@@ -129,7 +125,6 @@
         <a href="/" style="text-decoration: none; color: white;">
             <div class="logo">IPTV SEVEN</div>
         </a>
-        
         <button id="menu-toggle" class="menu-toggle-btn">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -365,6 +360,34 @@
         </section>
 
     </main>
+
+    <footer class="footer-bar">
+        <div class="footer-container">
+            
+            <div class="footer-section left">
+                <a href="/termos/">Termos de Uso</a>
+                <span class="sep">•</span>
+                <a href="/contato/">Suporte</a>
+            </div>
+
+            <div class="footer-section center">
+                <p>2025 © <strong>IPTV SEVEN</strong> | Todos os direitos reservados.</p>
+            </div>
+
+            <div class="footer-section right">
+                <div class="pay-mini" title="Pix">
+                    <i class="fas fa-qrcode"></i> <span>Pix</span>
+                </div>
+                <div class="pay-mini" title="Boleto">
+                    <i class="fas fa-barcode"></i> <span>Boleto</span>
+                </div>
+                <div class="pay-mini" title="Transferência">
+                    <i class="fas fa-university"></i> <span>Transf.</span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
 
     <script src="/script.js"></script>
 </body>
